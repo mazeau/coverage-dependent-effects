@@ -1,5 +1,6 @@
 from ase import Atoms
 from ase.calculators.vasp import Vasp
+from ase.calculators.emt import EMT
 from ase.constraints import FixAtoms
 from ase.optimize import BFGS
 from ase.build import fcc111, add_adsorbate
@@ -14,7 +15,8 @@ d = 1.10 # found in https://wiki.fysik.dtu.dk/ase/ase/atoms.html
 molecule = Atoms('CO', positions=[(0.,0.,0.),(0.,0.,d)])
 
 ### setting calculators
-calc = Vasp(xc='PBE', setups='recommended')
+#calc = Vasp(xc='PBE', setups='recommended')
+calc = EMT()
 slab.set_calculator(calc)
 molecule.set_calculator(calc)
 
